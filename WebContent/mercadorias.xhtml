@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<link rel="StyleSheet" type="text/css" href="recursos/estilo.css"></link>
+</h:head>
+<h:body>
+
+	<h1>Negociação de Mercadorias</h1>
+
+	<h:form>
+
+		<h:messages id="messages" class="erro" />
+
+		<fieldset class="painel">
+
+			<legend>
+				<big>Dados da Mercadoria</big>
+			</legend>
+
+			<h:outputLabel value="Tipo: " for="tipom" />
+			<h:selectOneMenu value="#{mercadoriaBean.mercadoria.tipo_Merc}"
+				id="tipom">
+				<f:selectItems value="#{mercadoriaBean.tipo_Mercadorias}"
+					itemValue="#{a}" />
+			</h:selectOneMenu>
+
+			<h:outputLabel value="Nome: " for="nome" />
+			<h:inputText id="nome" value="#{mercadoriaBean.mercadoria.nome_Merc}"
+				required="true"
+				requiredMessage="O nome da mercadoria é obrigatório!">
+				<f:ajax event="blur" render="messages" />
+			</h:inputText>
+
+			<h:outputLabel value="Preco: " for="preco" />
+			<h:inputText id="preco"
+				value="#{mercadoriaBean.mercadoria.preco_Merc}"
+				validatorMessage="O preço deve ter um valor minimo de 0.01">
+				<f:validateDoubleRange minimum="0.01" />
+				<f:ajax event="blur" render="messages" />
+			</h:inputText>
+
+			<h:outputLabel value="Quantidade: " for="quantidade" />
+			<h:inputText id="quantidade"
+				value="#{mercadoriaBean.mercadoria.qtde_Merc}" required="true"
+				requiredMessage="A quantidade da mercadoria é obrigatória!">
+				<f:ajax event="blur" render="messages" />
+			</h:inputText>
+
+			<h:outputLabel value="Tipo Negócio: " for="tipon" />
+			<h:selectOneMenu value="#{mercadoriaBean.mercadoria.tipo_Negoc}"
+				id="tipon">
+				<f:selectItems value="#{mercadoriaBean.tipo_Negocios}"
+					itemValue="#{a}" />
+			</h:selectOneMenu>
+
+		</fieldset>
+
+		<br></br>
+
+		<h:commandButton value="Gravar" action="#{mercadoriaBean.gravar}">
+		</h:commandButton>
+
+	</h:form>
+
+	<h2>Mercadorias Negociadas</h2>
+
+	<h:dataTable id="tabelaMercadorias"
+		value="#{mercadoriaBean.mercadorias}" styleClass="tabelaNegociacao"
+		headerClass="tabelaNegociacaoCabecalho"
+		rowClasses="tabelaNegociacaoImpar,tabelaNegociacaoPar" border="1"
+		var="mercadoria">
+
+		<h:column>
+			<f:facet name="header">Código</f:facet>
+			<h:outputText value="#{mercadoria.cod_Merc}" />
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">Tipo de Mercadoria</f:facet>
+			<h:outputText value="#{mercadoria.tipo_Merc}" />
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">Nome</f:facet>
+			<h:outputText value="#{mercadoria.nome_Merc}" />
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">Quantidade</f:facet>
+			<h:outputText value="#{mercadoria.qtde_Merc}" />
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">Preço</f:facet>
+			<h:outputText value="#{mercadoria.preco_Merc}" />
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">Tipo de Negociação</f:facet>
+			<h:outputText value="#{mercadoria.tipo_Negoc}" />
+		</h:column>
+
+	</h:dataTable>
+
+</h:body>
+
+</html>

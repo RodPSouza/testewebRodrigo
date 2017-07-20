@@ -1,0 +1,46 @@
+
+body{
+	font-family: "Opens Sans Condensed","Geórgia",sans-serif;
+	
+	
+	
+}
+
+
+.erro {
+	color:red; 
+	font-weight:bold;
+}	
+
+.painel {
+	
+	background-color: #6495ED;
+	margin-right: 15% 
+}
+
+
+.tabelaNegociacao {
+	
+   border-collapse:collapse;
+   border:1px solid #000000;
+   
+}
+
+.tabelaNegociacaoCabecalho {
+   text-align:center;
+   background:none repeat scroll 0 0 #B5B5B5;
+   border-bottom:1px solid #000000;  
+   padding:2px;
+}
+
+.tabelaNegociacaoImpar {
+   text-align:center;
+   background:none repeat scroll 0 0 #FFFFFFF;	
+}
+
+.tabelaNegociacaoPar {
+   text-align:center;
+   background:none repeat scroll 0 0 #6495ED;
+}
+   
+   
